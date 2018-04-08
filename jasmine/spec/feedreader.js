@@ -12,20 +12,21 @@ $(function() {
 
         // Spec checks if each feed in allFeeds has a defined, not empty URL
          it('URLs are provided', function() {
-           for (let object in allFeeds) {
-             expect(allFeeds[object].url).toBeDefined();
-             expect(allFeeds[object].url.length).not.toBe(0);
-           }
+           allFeeds.forEach(function(feed) {
+             expect(feed.url).toBeDefined();
+             expect(feed.url.length).not.toBe(0);
+           });
          });
 
         // Spec checks if each feed in All feeds has a defined, not empty name
          it('Names are provided', function() {
-           for (let object in allFeeds) {
-             expect(allFeeds[object].name).toBeDefined();
-             expect(allFeeds[object].name.length).not.toBe(0);
-           }
+           allFeeds.forEach(function(feed) {
+             expect(feed.name).toBeDefined();
+             expect(feed.name.length).not.toBe(0);
+           });
          });
     });
+
 
     // 2nd test suite: Checks if menu functions correctly
     describe('The menu', function() {
@@ -57,7 +58,7 @@ $(function() {
         /* Spec checks that there's at least one entry after feed has loaded
         and accounts for asynchronous loadFeed function and beforeEach */
         it('has at least one entry element', function(done) {
-          var container = $('.feed');
+          var container = $('.feed .entry');
           expect(container.length).toBeGreaterThan(0);
           done();
         });
